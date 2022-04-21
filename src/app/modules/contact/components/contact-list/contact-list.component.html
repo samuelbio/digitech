@@ -1,0 +1,41 @@
+<div class="btn-actions flex jb">
+    <div nz-col [nzSpan]="6">
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" nz-input placeholder="Search name" [(ngModel)]="search" (ngModelChange)="onSearch($event)"/>
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+        </ng-template>
+    </div>
+    <button
+    nz-button 
+    nzType="primary"
+    (click)="onCreate()"
+    >Add contact</button>
+</div>
+<nz-table #basicTable [nzData]="listOfData">
+    <thead>
+        <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.firstName }}</td>
+        <td>{{ data.lastName }}</td>
+        <td>
+            <a nz-button nzType="link" [routerLink]="['/contacts/show', data.id]" routerLinkActive="router-link-active" >View</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-button nzType="link" [routerLink]="['/contacts/edit', data.id]" routerLinkActive="router-link-active" >Edit</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button 
+                nz-button nzType="text" 
+                nzDanger
+                (click)="showConfirm(data.id!)"
+            >Delete</button>
+        </td>
+        </tr>
+    </tbody>
+    </nz-table>

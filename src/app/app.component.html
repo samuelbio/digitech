@@ -1,0 +1,22 @@
+<nz-layout>
+  <nz-header>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <a nz-menu-item nzSelected [routerLink]="['/contacts']">Contacts</a>
+    </ul>
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="200px" nzTheme="light">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+        <li nz-submenu nzOpen nzIcon="phone" nzTitle="Contacts">
+          <ul>
+            <a nz-menu-item nzSelected [routerLink]="['/contacts']" >List</a>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+       <router-outlet></router-outlet>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
